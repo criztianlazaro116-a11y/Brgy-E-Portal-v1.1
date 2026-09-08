@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File a Complaint | Brgy #22 Boyboy</title>
+  <style>
+    :root {
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --text-white: #ffffff;
+      --text-muted: #cbd5e1;
+      --primary-blue: #2563eb;
+      --primary-blue-hover: #1d4ed8;
+      --theme-green: #16a34a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-family); background-color: #0f172a; color: var(--text-white); line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
+    a { color: inherit; text-decoration: none; }
+    .navbar { max-width: 1400px; width: 100%; margin: 0 auto; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; background-color: rgba(15, 23, 42, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; font-weight: 700; font-size: 1.15rem; }
+    .brand-logo { width: 36px; height: 36px; border-radius: 50%; object-fit: contain; background: rgba(255, 255, 255, 0.2); }
+    .nav-menu { display: flex; align-items: center; gap: 1.5rem; font-size: 0.95rem; font-weight: 500; }
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .nav-link { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 0.25rem; color: rgba(255, 255, 255, 0.9); border-bottom: 2px solid transparent; }
+    .nav-item:hover .nav-link, .nav-link.active { color: var(--theme-green); border-bottom-color: var(--theme-green); }
+    .btn-login { background-color: var(--primary-blue); color: #ffffff !important; padding: 0.45rem 1.25rem; border-radius: 6px; font-weight: 600; }
+    .page-container { max-width: 900px; width: 100%; margin: 0 auto; padding: 4rem 2rem; flex: 1; }
+    .page-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .page-subtitle { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2.5rem; }
+    .form-card { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 2.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--text-muted); }
+    .form-control { width: 100%; padding: 0.75rem 1rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; }
+    .form-control:focus { border-color: var(--primary-blue); }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+    .btn-submit { background-color: var(--primary-blue); color: #fff; padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%; }
+    .btn-submit:hover { background-color: var(--primary-blue-hover); }
+    .site-footer { background-color: #3b82f6; color: #ffffff; padding-top: 3.5rem; width: 100%; }
+    .footer-container { max-width: 1300px; margin: 0 auto; padding: 0 2rem 3rem 2rem; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 2.5rem; }
+    .footer-brand { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem; }
+    .footer-logo { width: 42px; height: 42px; border-radius: 50%; object-fit: contain; background: rgba(255, 255, 255, 0.2); }
+    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1.5rem 2rem; text-align: center; font-size: 0.88rem; color: rgba(255, 255, 255, 0.9); max-width: 1300px; margin: 0 auto; }
+    @media (max-width: 768px) { .nav-menu { display: none; } .footer-container { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand"><img src="logo.png" alt="Logo" class="brand-logo"><span>Brgy #22 Boyboy</span></div>
+    <div class="nav-menu">
+      <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
+      <div class="nav-item"><a href="about.html" class="nav-link">About Us</a></div>
+      <div class="nav-item"><a href="services.html" class="nav-link">Services</a></div>
+      <div class="nav-item"><a href="announcements.html" class="nav-link">Announcements</a></div>
+      <div class="nav-item"><a href="file-complaint.html" class="nav-link active">Complaints</a></div>
+      <div class="nav-item"><a href="officials.html" class="nav-link">Officials</a></div>
+      <div class="nav-item"><a href="business-clearance.html" class="nav-link">Inquiries</a></div>
+      <a href="login.html" class="btn-login">Login</a>
+    </div>
+  </nav>
+
+  <main class="page-container">
+    <h1 class="page-title">File an Incident Report</h1>
+    <p class="page-subtitle">Submit community disputes or blotter entries securely for barangay mediation.</p>
+    
+    <div class="form-card">
+      <form>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" class="form-control" placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label>Contact Number / Email</label>
+          <input type="text" class="form-control" placeholder="Enter phone number or email">
+        </div>
+        <div class="form-group">
+          <label>Nature of Complaint / Incident</label>
+          <input type="text" class="form-control" placeholder="e.g., Neighborhood Noise, Property Dispute">
+        </div>
+        <div class="form-group">
+          <label>Detailed Description</label>
+          <textarea class="form-control" placeholder="Provide details including date, time, and involved parties..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit Report</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="Logo" class="footer-logo"><span style="font-size:1.6rem;font-weight:700;">Brgy #22 Boyboy</span></div>
+        <p style="font-size: 0.92rem; color: rgba(255,255,255,0.9);">Official E-Barangay Portal of Barangay #22 Boyboy, Piddig, Ilocos Norte.</p>
+      </div>
+      <div><h4>Quick Links</h4><ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.5rem;"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li></ul></div>
+      <div><h4>Services</h4><ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.5rem;"><li><a href="services.html">Clearances</a></li></ul></div>
+      <div><h4>Contact</h4><p style="font-size: 0.92rem; color: rgba(255,255,255,0.9);">Barangay Hall, Piddig, Ilocos Norte</p></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; Copyright E-Barangay Portal. All Rights Reserved</p></div>
+  </footer>
+</body>
+</html>
