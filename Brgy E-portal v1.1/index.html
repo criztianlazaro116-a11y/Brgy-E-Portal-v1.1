@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brgy E-Portal | Brgy #22 Boyboy Piddig Ilocos Norte</title>
+  <style>
+    :root {
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --text-white: #ffffff;
+      --text-muted: #cbd5e1;
+      --primary-blue: #2563eb;
+      --primary-blue-hover: #1d4ed8;
+      --theme-green: #16a34a;
+      --hero-overlay: linear-gradient(135deg, rgba(37, 99, 235, 0.82) 0%, rgba(30, 64, 175, 0.80) 45%, rgba(15, 23, 42, 0.78) 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-family); background-color: #0f172a; color: var(--text-white); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+
+    .hero-section { position: relative; width: 100%; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+    .bg-layer { position: absolute; inset: 0; width: 100%; height: 100%; background-position: center; background-size: cover; background-repeat: no-repeat; transition: opacity 1s ease-in-out; opacity: 0; z-index: 1; }
+    .bg-layer.active { opacity: 1; }
+    .hero-overlay-mask { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--hero-overlay); z-index: 2; pointer-events: none; }
+
+    .navbar { max-width: 1400px; width: 100%; margin: 0 auto; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 20; position: relative; }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; font-weight: 700; font-size: 1.15rem; }
+    .brand-logo { width: 36px; height: 36px; border-radius: 50%; object-fit: contain; background: rgba(255, 255, 255, 0.2); }
+    .nav-menu { display: flex; align-items: center; gap: 1.5rem; font-size: 0.95rem; font-weight: 500; }
+    .nav-item { position: relative; display: flex; align-items: center; }
+    .nav-link { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 0.25rem; color: rgba(255, 255, 255, 0.9); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s ease; }
+    .chevron-icon { width: 14px; height: 14px; stroke-width: 2.5; transition: transform 0.2s ease; }
+    .nav-item:hover .nav-link, .nav-link.active { color: var(--theme-green); border-bottom-color: var(--theme-green); }
+    .nav-item:hover .chevron-icon { transform: rotate(180deg); }
+
+    .dropdown-menu { position: absolute; top: 100%; left: 0; min-width: 220px; background-color: #ffffff; border-radius: 12px; padding: 0.5rem; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); opacity: 0; visibility: hidden; transform: translateY(8px); transition: all 0.2s ease; z-index: 30; list-style: none; margin-top: 0.25rem; }
+    .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu li a { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0.85rem; font-size: 0.9rem; color: #334155; font-weight: 500; border-radius: 8px; transition: background-color 0.15s ease, color 0.15s ease; white-space: nowrap; }
+    .dropdown-menu li a:hover { background-color: #f1f5f9; color: #0f172a; }
+    .dropdown-icon { width: 16px; height: 16px; color: #475569; flex-shrink: 0; }
+
+    .btn-login { background-color: var(--primary-blue); color: #ffffff !important; padding: 0.45rem 1.25rem; border-radius: 6px; font-weight: 600; transition: background-color 0.2s; }
+    .btn-login:hover { background-color: var(--primary-blue-hover); }
+
+    .hero-container { max-width: 1400px; width: 100%; margin: auto; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; z-index: 10; position: relative; }
+    .hero-content { max-width: 600px; }
+    .main-heading { font-size: 3.5rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .description-text { font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; }
+    .hero-seal-wrapper { display: flex; justify-content: center; align-items: center; }
+    .giant-seal-container { width: 480px; height: 480px; border-radius: 50%; background: rgba(255, 255, 255, 0.15); padding: 10px; backdrop-filter: blur(10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+    .giant-seal { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid #ffffff; background-color: #ffffff; }
+
+    .site-footer { background-color: #3b82f6; color: #ffffff; padding-top: 3.5rem; position: relative; width: 100%; }
+    .footer-container { max-width: 1300px; margin: 0 auto; padding: 0 2rem 3rem 2rem; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 2.5rem; }
+    .footer-brand { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem; }
+    .footer-logo { width: 42px; height: 42px; border-radius: 50%; object-fit: contain; background: rgba(255, 255, 255, 0.2); }
+    .footer-brand-title { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; }
+    .social-links { display: flex; gap: 0.75rem; }
+    .social-btn { width: 38px; height: 38px; border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; transition: all 0.25s ease; }
+    .social-btn:hover { background-color: #ffffff; color: #3b82f6; border-color: #ffffff; }
+    .footer-heading { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.25rem; color: #ffffff; }
+    .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links a { color: rgba(255, 255, 255, 0.85); font-size: 0.92rem; transition: color 0.2s ease, padding-left 0.2s ease; display: inline-block; }
+    .footer-links a:hover { color: #ffffff; padding-left: 4px; }
+    .contact-info { font-style: normal; font-size: 0.92rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); }
+    .contact-meta { margin-top: 0.85rem; }
+    .contact-meta strong { color: #ffffff; }
+    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.2); padding: 1.5rem 2rem; display: flex; justify-content: center; align-items: center; position: relative; max-width: 1300px; margin: 0 auto; }
+    .footer-bottom-content { text-align: center; font-size: 0.88rem; color: rgba(255, 255, 255, 0.9); }
+    .back-to-top { position: absolute; right: 2rem; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; width: 32px; height: 32px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: all 0.2s ease; }
+    .back-to-top:hover { background: #ffffff; color: #3b82f6; }
+
+    @media (max-width: 1024px) {
+      .hero-container { grid-template-columns: 1fr; text-align: center; }
+      .hero-content { margin: 0 auto; }
+      .giant-seal-container { width: 320px; height: 320px; }
+    }
+    @media (max-width: 992px) { .footer-container { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) { .nav-menu { display: none; } .main-heading { font-size: 2.5rem; } }
+    @media (max-width: 576px) { .footer-container { grid-template-columns: 1fr; gap: 2rem; } .back-to-top { right: 1rem; } }
+  </style>
+</head>
+<body>
+
+  <section class="hero-section">
+    <div class="bg-layer active" id="bg1"></div>
+    <div class="bg-layer" id="bg2"></div>
+    <div class="hero-overlay-mask"></div>
+
+    <nav class="navbar">
+      <div class="nav-brand">
+        <img src="logo.png" alt="Barangay Logo" class="brand-logo">
+        <span>Brgy #22 Boyboy Piddig Ilocos Norte</span>
+      </div>
+
+      <div class="nav-menu">
+        <div class="nav-item"><a href="index.html" class="nav-link active">Home</a></div>
+        <div class="nav-item">
+          <a href="about.html" class="nav-link">About Us <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg></a>
+          <ul class="dropdown-menu">
+            <li><a href="about.html"><svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> About Barangay</a></li>
+            <li><a href="faqs.html"><svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> FAQs</a></li>
+          </ul>
+        </div>
+        <div class="nav-item"><a href="services.html" class="nav-link">Services</a></div>
+        <div class="nav-item"><a href="announcements.html" class="nav-link">Announcements</a></div>
+        <div class="nav-item">
+          <a href="file-complaint.html" class="nav-link">Complaints <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg></a>
+          <ul class="dropdown-menu">
+            <li><a href="file-complaint.html"><svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> File Complaint (Non-Resident)</a></li>
+            <li><a href="track-complaint.html"><svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Track Complaint</a></li>
+          </ul>
+        </div>
+        <div class="nav-item">
+          <a href="officials.html" class="nav-link">Officials <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg></a>
+          <ul class="dropdown-menu">
+            <li><a href="officials.html"><svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Barangay Officials</a></li>
+            <li><a href="sk-members.html"><svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> SK Members</a></li>
+          </ul>
+        </div>
+        <div class="nav-item">
+          <a href="business-clearance.html" class="nav-link">Inquiries <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg></a>
+          <ul class="dropdown-menu">
+            <li><a href="business-clearance.html"><svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Business Clearance</a></li>
+            <li><a href="contact.html"><svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Contact Us</a></li>
+          </ul>
+        </div>
+        <a href="login.html" class="btn-login">Login</a>
+      </div>
+    </nav>
+
+    <main class="hero-container">
+      <div class="hero-content">
+        <h1 class="main-heading">Brgy E-Portal</h1>
+        <p class="description-text">A Barangay Portal System is an online platform designed to optimize the services and transactions within local barangay.</p>
+      </div>
+      <div class="hero-seal-wrapper">
+        <div class="giant-seal-container">
+          <img src="logo.png" alt="Official Barangay Seal" class="giant-seal">
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col brand-col">
+        <div class="footer-brand">
+          <img src="logo.png" alt="Barangay Logo" class="footer-logo">
+          <span class="footer-brand-title">Barangay Boyboy</span>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook" class="social-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">Useful Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="officials.html">Officials</a></li>
+          <li><a href="announcements.html">Announcements</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">Our Services</h3>
+        <ul class="footer-links">
+          <li><a href="services.html">E-Barangay Services</a></li>
+          <li><a href="business-clearance.html">Business Permits</a></li>
+        </ul>
+      </div>
+      <div class="footer-col contact-col">
+        <h3 class="footer-heading">Contact Us</h3>
+        <address class="contact-info">
+          <p>Brgy #22 Boyboy</p>
+          <p>Piddig, Ilocos Norte</p>
+          <p class="contact-meta"><strong>Phone:</strong> +63 912 345 6789</p>
+          <p class="contact-meta"><strong>Email:</strong> brgy22boyboy.piddig@gmail.com</p>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-content"><p>&copy; Copyright <strong>E-Barangay Portal</strong> All Rights Reserved</p></div>
+      <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">&uarr;</button>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const philippineFarmersImages = [
+        "https://images.unsplash.com/photo-1590682680695-43b964a3ae17?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1592417817098-8f3d6ef23a80?auto=format&fit=crop&w=1920&q=80",
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920&q=80"
+      ];
+      const bg1 = document.getElementById("bg1");
+      const bg2 = document.getElementById("bg2");
+      let currentIndex = 0, activeLayer = bg1, inactiveLayer = bg2;
+      bg1.style.backgroundImage = `url('${philippineFarmersImages[0]}')`;
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % philippineFarmersImages.length;
+        inactiveLayer.style.backgroundImage = `url('${philippineFarmersImages[currentIndex]}')`;
+        inactiveLayer.classList.add("active");
+        activeLayer.classList.remove("active");
+        const temp = activeLayer; activeLayer = inactiveLayer; inactiveLayer = temp;
+      }, 3000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resident Registration | E-Barangay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 min-h-screen py-10 flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-xl shadow-md w-full max-w-2xl border">
+        <a href="../index.html" class="text-sm text-blue-600 hover:underline">&larr; Back to Main Website</a>
+        <h2 class="text-2xl font-bold text-gray-800 mt-4 mb-1">Resident Registration</h2>
+        <p class="text-sm text-gray-500 mb-6">Fill out the information below to register as a verified resident.</p>
+
+        <form action="./login.html" method="GET" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">First Name</label>
+                <input type="text" required class="w-full mt-1 p-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Last Name</label>
+                <input type="text" required class="w-full mt-1 p-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Purok / Zone Address</label>
+                <input type="text" placeholder="Purok 1" required class="w-full mt-1 p-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Contact Number</label>
+                <input type="tel" placeholder="09123456789" required class="w-full mt-1 p-2 border rounded-lg">
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                <input type="email" required class="w-full mt-1 p-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" required class="w-full mt-1 p-2 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <input type="password" required class="w-full mt-1 p-2 border rounded-lg">
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700">Valid ID Upload (For Verification)</label>
+                <input type="file" required class="w-full mt-1 p-2 border rounded-lg bg-gray-50 text-sm">
+            </div>
+            <div class="md:col-span-2 mt-4">
+                <button type="submit" class="w-full bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700">Submit Account Registration</button>
+            </div>
+        </form>
+
+        <p class="text-sm text-center text-gray-600 mt-6">
+            Already registered? <a href="./login.html" class="text-blue-600 font-semibold hover:underline">Log in here</a>
+        </p>
+    </div>
+
+</body>
+</html>

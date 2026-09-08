@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Staff Account Request | E-Portal Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 min-h-screen py-10 flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-2xl border border-gray-200">
+        <a href="../index.html" class="text-sm text-indigo-600 font-medium hover:underline">&larr; Back to Main Website</a>
+        
+        <div class="text-center mt-3 mb-6">
+            <span class="text-4xl">🏛️</span>
+            <h2 class="text-2xl font-bold text-gray-900 mt-2">Official Staff Registration</h2>
+            <p class="text-xs text-gray-500">Request access to the Barangay Administrative Management System</p>
+        </div>
+
+        <form action="./login.html" method="GET" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">First Name</label>
+                <input type="text" required class="w-full mt-1 p-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-600 outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Last Name</label>
+                <input type="text" required class="w-full mt-1 p-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-600 outline-none">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Official Position / Role</label>
+                <select required class="w-full mt-1 p-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-600 outline-none bg-white">
+                    <option value="">Select Designation</option>
+                    <option value="Barangay Captain">Barangay Captain</option>
+                    <option value="Barangay Secretary">Barangay Secretary</option>
+                    <option value="Barangay Treasurer">Barangay Treasurer</option>
+                    <option value="Kagawad">Barangay Kagawad</option>
+                    <option value="SK Chairperson">SK Chairperson</option>
+                    <option value="Administrative Staff">Administrative Staff</option>
+                </select>
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Official Staff ID No.</label>
+                <input type="text" placeholder="BRGY-EMP-2026-XX" required class="w-full mt-1 p-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-600 outline-none">
+            </div>
+
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700">Official Work Email Address</label>
+                <input type="email" required class="w-full mt-1 p-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-600 outline-none">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" required class="w-full mt-1 p-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-600 outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <input type="password" required class="w-full mt-1 p-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-600 outline-none">
+            </div>
+
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700">Proof of Official Appointment / Civil ID</label>
+                <input type="file" required class="w-full mt-1 p-2 border rounded-lg bg-gray-50 text-sm">
+                <p class="text-[11px] text-gray-400 mt-1">Upload appointment document or valid ID for super-admin verification.</p>
+            </div>
+
+            <div class="md:col-span-2 mt-4">
+                <button type="submit" class="w-full bg-indigo-900 text-white py-2.5 rounded-lg font-semibold hover:bg-indigo-950 transition">
+                    Submit Access Request
+                </button>
+            </div>
+        </form>
+
+        <p class="text-xs text-center text-gray-600 mt-6">
+            Already have an official account? <a href="./login.html" class="text-indigo-600 font-semibold hover:underline">Log in here</a>
+        </p>
+    </div>
+
+</body>
+</html>

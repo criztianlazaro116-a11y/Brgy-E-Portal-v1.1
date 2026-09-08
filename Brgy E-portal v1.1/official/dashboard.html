@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Admin Dashboard | E-Barangay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex">
+
+    <!-- Official Sidebar / Menu Navigation -->
+    <aside class="w-64 bg-slate-900 text-white min-h-screen p-5 flex flex-col justify-between">
+        <div>
+            <div class="text-lg font-bold tracking-wider mb-8 flex items-center gap-2">
+                <span>🏛️</span> BRGY ADMIN
+            </div>
+            <nav class="space-y-2 text-sm">
+                <a href="#" class="block bg-indigo-800 px-4 py-2.5 rounded font-semibold">Dashboard</a>
+                <a href="#" class="block hover:bg-slate-800 px-4 py-2.5 rounded transition">Document Requests</a>
+                <a href="#" class="block hover:bg-slate-800 px-4 py-2.5 rounded transition">Resident Records</a>
+                <a href="#" class="block hover:bg-slate-800 px-4 py-2.5 rounded transition">Blotter Reports</a>
+                <a href="#" class="block hover:bg-slate-800 px-4 py-2.5 rounded transition">Announcements</a>
+                <a href="#" class="block hover:bg-slate-800 px-4 py-2.5 rounded transition">System Settings</a>
+            </nav>
+        </div>
+        <div>
+            <a href="../index.html" class="block text-center bg-red-600 hover:bg-red-700 py-2 rounded text-xs font-bold">Logout</a>
+        </div>
+    </aside>
+
+    <!-- Admin Main Body -->
+    <main class="flex-1 p-8">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-2xl font-bold text-gray-800">Barangay Admin Overview</h1>
+            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1.5 rounded-full font-semibold">Logged in as: Secretary Office</span>
+        </header>
+
+        <!-- Admin Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white p-5 rounded-lg border shadow-sm">
+                <p class="text-gray-500 text-xs uppercase font-bold">Total Registered Residents</p>
+                <h3 class="text-2xl font-bold text-gray-800 mt-2">1,240</h3>
+            </div>
+            <div class="bg-white p-5 rounded-lg border shadow-sm">
+                <p class="text-gray-500 text-xs uppercase font-bold">Pending Clearance Requests</p>
+                <h3 class="text-2xl font-bold text-amber-600 mt-2">18</h3>
+            </div>
+            <div class="bg-white p-5 rounded-lg border shadow-sm">
+                <p class="text-gray-500 text-xs uppercase font-bold">Approved Today</p>
+                <h3 class="text-2xl font-bold text-emerald-600 mt-2">25</h3>
+            </div>
+            <div class="bg-white p-5 rounded-lg border shadow-sm">
+                <p class="text-gray-500 text-xs uppercase font-bold">Open Incident Reports</p>
+                <h3 class="text-2xl font-bold text-rose-600 mt-2">3</h3>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
